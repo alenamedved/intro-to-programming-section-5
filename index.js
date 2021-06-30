@@ -90,9 +90,7 @@ function checkGuess() {
     
     if(validateInput(guess)) {
        
-      const remainingAttempts = maxNumberOfAttempts - attempts;
-            
-      if (attempts === maxNumberOfAttempts) {
+      if (attempts >= maxNumberOfAttempts) {
         guessInput.value = '';
         submitButton.disabled = true; 
         guessInput.disabled = true;
@@ -101,6 +99,8 @@ function checkGuess() {
         maxGuessesMessage.style.display = ''
         return
       }
+      
+      const remainingAttempts = maxNumberOfAttempts - attempts;
          
       if (guess < targetNumber) {
         tooLowMessage.style.display = '';
@@ -120,7 +120,9 @@ function checkGuess() {
         submitButton.disabled = true;
         guessInput.disabled = true;
       } 
-    } 
+    } else {
+      nanMessage.style.display = ''
+    }
   
   guessInput.value = '';
 
